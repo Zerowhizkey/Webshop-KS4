@@ -69,7 +69,7 @@ function Cart() {
 						>
 							<img
 								src={product.image}
-								alt={product.name}
+								alt={product.title}
 								style={{
 									height: "100px",
 									width: "150px",
@@ -81,7 +81,7 @@ function Cart() {
 						</Grid>
 
 						<Grid item xs={4}>
-							<Typography>{product.name}</Typography>
+							<Typography>{product.title}</Typography>
 						</Grid>
 						<Grid item xs={2}>
 							<Typography>{product.price}$</Typography>

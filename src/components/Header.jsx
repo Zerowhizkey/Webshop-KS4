@@ -14,134 +14,167 @@ import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
 
 const createLink = (text, path) => {
-  return { text, path };
+	return { text, path };
 };
 
 const pages = [
-  createLink("Home", "/"),
-  createLink("Products", "/products"),
-  createLink("Cart", "/cart"),
+	createLink("Home", "/"),
+	createLink("Products", "/products"),
+	createLink("Cart", "/cart"),
 ];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = [
+	createLink("Profile", "/profile"),
+	createLink("Account", "/account"),
+	createLink("Dashboard", "/dashboard"),
+	createLink("Login", "/login"),
+];
 
 const Header = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+	const [anchorElNav, setAnchorElNav] = React.useState(null);
+	const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+	const handleOpenNavMenu = (event) => {
+		setAnchorElNav(event.currentTarget);
+	};
+	const handleOpenUserMenu = (event) => {
+		setAnchorElUser(event.currentTarget);
+	};
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+	const handleCloseNavMenu = () => {
+		setAnchorElNav(null);
+	};
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+	const handleCloseUserMenu = () => {
+		setAnchorElUser(null);
+	};
 
-  const navLinks = pages.map((page) => (
-    <MenuItem key={page.text} component={NavLink} to={page.path}>
-      <Typography textAlign="center">{page.text}</Typography>
-    </MenuItem>
-  ));
+	const navLinks = pages.map((page) => (
+		<MenuItem key={page.text} component={NavLink} to={page.path}>
+			<Typography textAlign="center">{page.text}</Typography>
+		</MenuItem>
+	));
 
-  return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-          >
-            PGS
-          </Typography>
+	const userLinks = settings.map((setting) => (
+		<MenuItem key={setting.text} component={NavLink} to={setting.path}>
+			<Typography textAlign="center">{setting.text}</Typography>
+		</MenuItem>
+	));
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
+	return (
+		<AppBar position="static">
+			<Container maxWidth="xl">
+				<Toolbar disableGutters>
+					<Typography
+						variant="h6"
+						noWrap
+						component="div"
+						sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+					>
+						PGS
+					</Typography>
 
-            {/* BURGER MENU */}
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {navLinks}
-            </Menu>
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-          >
-            PGS
-          </Typography>
+					<Box
+						sx={{
+							flexGrow: 1,
+							display: { xs: "flex", md: "none" },
+						}}
+					>
+						<IconButton
+							size="large"
+							aria-label="account of current user"
+							aria-controls="menu-appbar"
+							aria-haspopup="true"
+							onClick={handleOpenNavMenu}
+							color="inherit"
+						>
+							<MenuIcon />
+						</IconButton>
 
-          {/* DESKTOP MENU */}
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {navLinks}
-          </Box>
+						{/* BURGER MENU */}
+						<Menu
+							id="menu-appbar"
+							anchorEl={anchorElNav}
+							anchorOrigin={{
+								vertical: "bottom",
+								horizontal: "left",
+							}}
+							keepMounted
+							transformOrigin={{
+								vertical: "top",
+								horizontal: "left",
+							}}
+							open={Boolean(anchorElNav)}
+							onClose={handleCloseNavMenu}
+							sx={{
+								display: { xs: "block", md: "none" },
+							}}
+						>
+							{navLinks}
+						</Menu>
+					</Box>
+					<Typography
+						variant="h6"
+						noWrap
+						component="div"
+						sx={{
+							flexGrow: 1,
+							display: { xs: "flex", md: "none" },
+						}}
+					>
+						PGS
+					</Typography>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
+					{/* DESKTOP MENU */}
+					<Box
+						sx={{
+							flexGrow: 1,
+							display: { xs: "none", md: "flex" },
+						}}
+					>
+						{navLinks}
+					</Box>
+
+					<Box sx={{ flexGrow: 0 }}>
+						<Tooltip title="Open settings">
+							<IconButton
+								onClick={handleOpenUserMenu}
+								sx={{ p: 0 }}
+							>
+								<Avatar alt="Remy Sharp" src="" />
+							</IconButton>
+						</Tooltip>
+						<Menu
+							sx={{ mt: "45px" }}
+							id="menu-appbar"
+							anchorEl={anchorElUser}
+							anchorOrigin={{
+								vertical: "top",
+								horizontal: "right",
+							}}
+							keepMounted
+							transformOrigin={{
+								vertical: "top",
+								horizontal: "right",
+							}}
+							open={Boolean(anchorElUser)}
+							onClose={handleCloseUserMenu}
+						>
+							{/* {settings.map((setting) => (
+								<MenuItem
+									key={setting}
+									onClick={handleCloseUserMenu}
+								>
+									<Typography textAlign="center">
+										{setting}
+									</Typography>
+								</MenuItem>
+							))} */}
+							{userLinks}
+						</Menu>
+					</Box>
+				</Toolbar>
+			</Container>
+		</AppBar>
+	);
 };
 export default Header;
