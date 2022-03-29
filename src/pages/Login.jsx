@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Layout from "../components/Layout";
-import Box from "@mui/material/Box";
+import Grid from "@mui/material/Box";
 import { useRecoilValue, useRecoilState } from "recoil";
 import authState from "../stores/auth/atom";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
 function Login() {
 	const [username, setUsername] = useState("");
@@ -15,10 +15,10 @@ function Login() {
 	const [auth, setAuth] = useRecoilState(authState);
 	console.log(users);
 
-	const [data, setData] = useState({
-		username: username,
-		password: password,
-	});
+	// const [data, setData] = useState({
+	// 	username: username,
+	// 	password: password,
+	// });
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -49,16 +49,21 @@ function Login() {
 
 	return (
 		<Layout>
-			<Box
+			<Grid
+				container
+				direction="row"
+				justifyContent="center"
 				onSubmit={handleSubmit}
 				component="form"
 				sx={{
-					"& .MuiTextField-root": { m: 3, width: "25ch" },
+					"& .MuiTextField-root": { m: 1, width: "25ch" },
 				}}
 				noValidate
 				autoComplete="off"
+				display="flex"
+				alignItems="center"
 			>
-				<Box>
+				<Grid item>
 					<TextField
 						required
 						id="outlined-required"
@@ -73,12 +78,12 @@ function Login() {
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 					/>
-
-					<Button variant="contained" color="success" type="submit">
-						Log In
-					</Button>
-				</Box>
-			</Box>
+					<Button type="submit">Log In</Button>
+					<Typography padding={1}>
+						Not a user ? <Link to="/register">Sign Up!</Link>
+					</Typography>
+				</Grid>
+			</Grid>
 		</Layout>
 	);
 }

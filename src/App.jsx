@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
-
+import Register from "./pages/Register";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -23,6 +23,7 @@ function App() {
 					<Route path="/account" element={<Account />} />
 					<Route path="/dashboard" element={<Dashboard />} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/register" element={<Register />} />
 				</Routes>
 			</Router>
 		</>
