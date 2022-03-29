@@ -7,6 +7,7 @@ import authState from "../stores/auth/atom";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+
 function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -62,7 +63,6 @@ function Login() {
 						required
 						id="outlined-required"
 						label="Username"
-						defaultValue=""
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 					/>

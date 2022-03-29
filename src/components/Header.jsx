@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
+import { useRecoilValue, useRecoilState } from "recoil";
+import authState from "../stores/auth/atom";
 
 const createLink = (text, path) => {
 	return { text, path };
@@ -26,12 +28,15 @@ const settings = [
 	createLink("Profile", "/profile"),
 	createLink("Account", "/account"),
 	createLink("Dashboard", "/dashboard"),
-	createLink("Login", "/login"),
 ];
+
+const signInOut = [createLink("Login", "/login")];
 
 const Header = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
+	const user = useRecoilValue(authState);
+	const [auth, setAuth] = useRecoilState(authState);
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -48,6 +53,10 @@ const Header = () => {
 		setAnchorElUser(null);
 	};
 
+	const handleSignOut = () => {
+		setAuth("");
+	};
+
 	const navLinks = pages.map((page) => (
 		<MenuItem key={page.text} component={NavLink} to={page.path}>
 			<Typography textAlign="center">{page.text}</Typography>
@@ -57,6 +66,18 @@ const Header = () => {
 	const userLinks = settings.map((setting) => (
 		<MenuItem key={setting.text} component={NavLink} to={setting.path}>
 			<Typography textAlign="center">{setting.text}</Typography>
+		</MenuItem>
+	));
+
+	const signInOutLinks = signInOut.map((signInOut) => (
+		<MenuItem key={signInOut.text} component={NavLink} to={signInOut.path}>
+			{user.token ? (
+				<Button onClick={handleSignOut}>
+					<Typography textAlign="center">Logout</Typography>
+				</Button>
+			) : (
+				<Typography textAlign="center">{signInOut.text}</Typography>
+			)}
 		</MenuItem>
 	));
 
@@ -171,6 +192,7 @@ const Header = () => {
 							))} */}
 
 							{userLinks}
+							{signInOutLinks}
 						</Menu>
 					</Box>
 				</Toolbar>
