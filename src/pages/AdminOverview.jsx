@@ -21,7 +21,7 @@ function AdminOverview() {
 				{users.map((user) => {
 					return (
 						<div key={user.id}>
-							<div>{user.name.firstname}</div>
+							<div>{user.username}</div>
 						</div>
 					);
 				})}
