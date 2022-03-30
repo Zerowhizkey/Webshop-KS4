@@ -4,7 +4,7 @@ import { Button, Typography, TextField, Grid } from "@mui/material";
 import authState from "../stores/auth/atom";
 import { useRecoilState } from "recoil";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { Navigate } from "react-router-dom";
 // import axios from "axios";
 // import authState from "../stores/auth/atom";
@@ -21,12 +21,15 @@ function Register() {
 			lastname: "",
 		},
 		address: {
-			city: "",
-			street: "",
-			zipcode: "",
+			city: "bajsstaden",
+			street: "bajskorvgatan23",
+			zipcode: "123123",
+			number: 123,
 		},
-		phone: "",
+		phone: "03430234234	",
 	});
+
+	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -52,10 +55,10 @@ function Register() {
 							...auth,
 							token: response.data.token,
 						});
+						navigate("/profile");
 					});
 			});
 	};
-	if (auth.token) return <Navigate to="/profile" />;
 	return (
 		<Layout>
 			<Grid
@@ -77,7 +80,7 @@ function Register() {
 					<TextField
 						required
 						label="First name"
-						value={user.firstname}
+						value={user.name.firstname}
 						onChange={(e) =>
 							setUser({
 								...user,
@@ -93,7 +96,7 @@ function Register() {
 					<TextField
 						required
 						label="Last name"
-						value={user.lastname}
+						value={user.name.lastname}
 						onChange={(e) =>
 							setUser({
 								...user,

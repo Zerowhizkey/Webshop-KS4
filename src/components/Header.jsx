@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useRecoilValue, useRecoilState, useResetRecoilState } from "recoil";
 import authState from "../stores/auth/atom";
 
 const createLink = (text, path) => {
@@ -36,7 +36,7 @@ const Header = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const user = useRecoilValue(authState);
-	const [auth, setAuth] = useRecoilState(authState);
+	const resetAuth = useResetRecoilState(authState);
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -54,7 +54,7 @@ const Header = () => {
 	};
 
 	const handleSignOut = () => {
-		setAuth("");
+		resetAuth();
 	};
 
 	const navLinks = pages.map((page) => (

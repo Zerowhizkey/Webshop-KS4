@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Layout from "../components/Layout";
 import Grid from "@mui/material/Box";
-import { useRecoilValue, useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import authState from "../stores/auth/atom";
 import { Button, Typography } from "@mui/material";
 import axios from "axios";
@@ -11,9 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const users = useRecoilValue(authState);
-	const [auth, setAuth] = useRecoilState(authState);
-	console.log(users);
+	const setAuth = useSetRecoilState(authState);
 	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
@@ -22,17 +20,24 @@ function Login() {
 		axios
 			.post(
 				"https://k4backend.osuka.dev/auth/login",
-				// { username: "mor_2314", password: "83r5^_" },
-				{ username: username, password: password },
-				users
+
+				{ username: username, password: password }
 			)
 			.then((response) => {
+				axios
+					.get(
+						`https://k4backend.osuka.dev/users/${response.data.userId}`
+					)
+					.then((userData) => {
+						console.log(userData);
+						setAuth({
+							user: userData.data,
+							token: response.data.token,
+						});
+					});
 				console.log(response.status);
-				console.log(response.data.token);
-				setAuth({
-					...auth,
-					token: response.data.token,
-				});
+				console.log(response);
+
 				navigate("/profile");
 			});
 	};
