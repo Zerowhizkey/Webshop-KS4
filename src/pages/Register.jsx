@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from "../components/Layout";
 import { Button, Typography, TextField, Grid } from "@mui/material";
 import authState from "../stores/auth/atom";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import { Navigate } from "react-router-dom";
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 // import { useRecoilValue, useRecoilState } from "recoil";
 
 function Register() {
-	const [auth, setAuth] = useRecoilState(authState);
+	const setAuth = useSetRecoilState(authState);
 	const [user, setUser] = useState({
 		email: "",
 		username: "",
