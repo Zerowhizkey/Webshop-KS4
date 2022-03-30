@@ -33,30 +33,27 @@ function Register() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
 		axios
 			.post("https://k4backend.osuka.dev/users", user)
 			.then((response) => {
-				console.log(response.status);
-				console.log(response.data);
 				axios
-					.post(
-						"https://k4backend.osuka.dev/auth/login",
-						// { username: "mor_2314", password: "83r5^_" },
-						{
-							username: response.data.username,
-							password: response.data.password,
-						}
-					)
+					.post("https://k4backend.osuka.dev/auth/login", {
+						username: response.data.username,
+						password: response.data.password,
+					})
 					.then((response) => {
-						console.log(response.status);
-						console.log(response.data.token);
-						setAuth({
-							...auth,
-							token: response.data.token,
-						});
-						navigate("/profile");
+						axios
+							.get(
+								`https://k4backend.osuka.dev/users/${response.data.userId}`
+							)
+							.then((userData) => {
+								setAuth({
+									user: userData.data,
+									token: response.data.token,
+								});
+							});
 					});
+				navigate("/profile");
 			});
 	};
 	return (

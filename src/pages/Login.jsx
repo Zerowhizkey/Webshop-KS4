@@ -18,26 +18,21 @@ function Login() {
 		e.preventDefault();
 
 		axios
-			.post(
-				"https://k4backend.osuka.dev/auth/login",
-
-				{ username: username, password: password }
-			)
+			.post("https://k4backend.osuka.dev/auth/login", {
+				username: username,
+				password: password,
+			})
 			.then((response) => {
 				axios
 					.get(
 						`https://k4backend.osuka.dev/users/${response.data.userId}`
 					)
 					.then((userData) => {
-						console.log(userData);
 						setAuth({
 							user: userData.data,
 							token: response.data.token,
 						});
 					});
-				console.log(response.status);
-				console.log(response);
-
 				navigate("/profile");
 			});
 	};
@@ -57,8 +52,6 @@ function Login() {
 				noValidate
 				autoComplete="off"
 				display="flex"
-
-				// alignItems="center"
 			>
 				<Grid item>
 					<TextField

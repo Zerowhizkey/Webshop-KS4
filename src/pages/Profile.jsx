@@ -7,7 +7,6 @@ import { Typography } from "@mui/material";
 
 function Profile() {
 	const { user } = useRecoilValue(authState);
-
 	return (
 		<Layout>
 			<Link to="/login">login</Link>
