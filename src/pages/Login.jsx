@@ -15,19 +15,9 @@ function Login() {
 	const [auth, setAuth] = useRecoilState(authState);
 	console.log(users);
 
-	// const [data, setData] = useState({
-	// 	username: username,
-	// 	password: password,
-	// });
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// authState = {
-		// 	username: data.username,
-		// 	password: data.password,
-		// };
-		// eyJr389hbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-		// eyJr389hbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+
 		axios
 			.post(
 				"https://k4backend.osuka.dev/auth/login",
@@ -50,6 +40,7 @@ function Login() {
 	return (
 		<Layout>
 			<Grid
+				margin={1}
 				container
 				direction="row"
 				justifyContent="center"
@@ -61,7 +52,8 @@ function Login() {
 				noValidate
 				autoComplete="off"
 				display="flex"
-				alignItems="center"
+
+				// alignItems="center"
 			>
 				<Grid item>
 					<TextField
@@ -71,6 +63,8 @@ function Login() {
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 					/>
+				</Grid>
+				<Grid item>
 					<TextField
 						id="outlined-password-input"
 						label="Password"
@@ -78,43 +72,15 @@ function Login() {
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 					/>
-					<Button type="submit">Log In</Button>
-					<Typography padding={1}>
-						Not a user ? <Link to="/register">Sign Up!</Link>
-					</Typography>
 				</Grid>
+
+				<Button type="submit">Log In</Button>
 			</Grid>
+			<Typography padding={1} textAlign="center">
+				Not a user ? <Link to="/register">Sign Up!</Link>
+			</Typography>
 		</Layout>
 	);
 }
 
 export default Login;
-
-// const App = () => {
-// 	return (
-// 		<div>
-// 			<h1>Login Account</h1>
-// 			<form onSubmit={handleSubmit}>
-// 				<label htmlFor="email">
-// 					Email
-// 					<input
-// 						type="email"
-// 						name="email"
-// 						value={data.email}
-// 						onChange={handleChange}
-// 					/>
-// 				</label>
-// 				<label htmlFor="password">
-// 					Password
-// 					<input
-// 						type="password"
-// 						name="password"
-// 						value={data.password}
-// 						onChange={handleChange}
-// 					/>
-// 				</label>
-// 				<button type="submit">Login</button>
-// 			</form>
-// 		</div>
-// 	);
-// };

@@ -7,7 +7,7 @@ import Cart from "./pages/Cart";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import Account from "./pages/Account";
+// import Account from "./pages/Account";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
 					<Route path="/products/:productId" element={<Product />} />
 					<Route path="/cart" element={<Cart />} />
 					<Route path="/profile" element={<Profile />} />
-					<Route path="/account" element={<Account />} />
+					{/* <Route path="/account" element={<Account />} /> */}
 					<Route path="/dashboard" element={<Dashboard />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />

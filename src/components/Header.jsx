@@ -26,7 +26,7 @@ const pages = [
 ];
 const settings = [
 	createLink("Profile", "/profile"),
-	createLink("Account", "/account"),
+	// createLink("Account", "/account"),
 	createLink("Dashboard", "/dashboard"),
 ];
 
