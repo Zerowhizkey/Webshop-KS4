@@ -6,7 +6,7 @@ import { useRecoilValue, useRecoilState } from "recoil";
 import authState from "../stores/auth/atom";
 import { Button, Typography } from "@mui/material";
 import axios from "axios";
-import { Navigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
 	const [username, setUsername] = useState("");
@@ -14,6 +14,7 @@ function Login() {
 	const users = useRecoilValue(authState);
 	const [auth, setAuth] = useRecoilState(authState);
 	console.log(users);
+	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -32,10 +33,9 @@ function Login() {
 					...auth,
 					token: response.data.token,
 				});
+				navigate("/profile");
 			});
 	};
-
-	if (auth.token) return <Navigate to="/profile" />;
 
 	return (
 		<Layout>
