@@ -72,8 +72,15 @@ const Header = () => {
 	const signInOutLinks = signInOut.map((signInOut) => (
 		<MenuItem key={signInOut.text} component={NavLink} to={signInOut.path}>
 			{user.token ? (
-				<Button onClick={handleSignOut}>
-					<Typography textAlign="center">Logout</Typography>
+				<Button
+					style={{
+						minWidth: 0,
+						padding: 0,
+						color: "rgba(0, 0, 0, 0.87)",
+						textTransform: "none",
+					}}
+				>
+					<Typography onClick={handleSignOut}>Logout</Typography>
 				</Button>
 			) : (
 				<Typography textAlign="center">{signInOut.text}</Typography>
@@ -180,17 +187,6 @@ const Header = () => {
 							open={Boolean(anchorElUser)}
 							onClose={handleCloseUserMenu}
 						>
-							{/* {settings.map((setting) => (
-								<MenuItem
-									key={setting}
-									onClick={handleCloseUserMenu}
-								>
-									<Typography textAlign="center">
-										{setting}
-									</Typography>
-								</MenuItem>
-							))} */}
-
 							{userLinks}
 							{signInOutLinks}
 						</Menu>

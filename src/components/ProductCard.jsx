@@ -11,50 +11,47 @@ import { useRecoilState } from "recoil";
 import { cartState } from "../stores/cart/atom";
 
 function ProductCard({ product }) {
-  const [cart, setCart] = useRecoilState(cartState);
+	const [cart, setCart] = useRecoilState(cartState);
 
-  function handleAddToCart() {
-    const newCartItem = {
-      id: product.id,
-      qty: 1,
-    };
+	function handleAddToCart() {
+		const newCartItem = {
+			id: product.id,
+			qty: 1,
+		};
 
-    setCart([...cart, newCartItem]);
-  }
-  return (
-    <Grid item margin={2} align="center" md={3} sm={4} xs={12}>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          component="img"
-          alt={product.title}
-          height="140"
-          image={product.image}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            {product.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab autem
-            veritatis saepe optio et. Deleniti sit id natus! Necessitatibus sed
-            accusamus corrupti fugiat aut enim eaque accusantium dolorem
-            adipisci aperiam?
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button onClick={handleAddToCart}>Add</Button>
+		setCart([...cart, newCartItem]);
+	}
+	return (
+		<Grid item margin={2} align="center" md={3} sm={4} xs={12}>
+			<Card sx={{ maxWidth: 345 }}>
+				<CardMedia
+					component="img"
+					alt={product.title}
+					height="140"
+					image={product.image}
+				/>
+				<CardContent>
+					<Typography gutterBottom variant="h6" component="div">
+						{product.name}
+					</Typography>
+					<Typography variant="body2" color="text.secondary">
+						{product.category}
+					</Typography>
+				</CardContent>
+				<CardActions>
+					<Button onClick={handleAddToCart}>Add</Button>
 
-          <Button
-            size="small"
-            component={Link}
-            to={`${location.pathname}/${product.id}`}
-          >
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
-    </Grid>
-  );
+					<Button
+						size="small"
+						component={Link}
+						to={`${location.pathname}/${product.id}`}
+					>
+						Learn More
+					</Button>
+				</CardActions>
+			</Card>
+		</Grid>
+	);
 }
 
 export default ProductCard;
