@@ -46,8 +46,8 @@ function Cart() {
 								alt={product.title}
 								style={{
 									height: "100px",
-									width: "150px",
-									objectFit: "cover",
+									width: "100px",
+									objectFit: "contain",
 									objectPosition: "center",
 									display: "block",
 								}}
@@ -92,11 +92,15 @@ function Cart() {
 
 	return (
 		<Layout>
-			<div>
-				<h1>My Cart</h1>
-				{cart.items.map(getProduct)}
-				<Typography>Total amount: {getTotal().toFixed(2)}$</Typography>
-			</div>
+			<Grid container justifyContent="center">
+				<Grid item textAlign="center">
+					<h1>My Cart</h1>
+					{cart.items.map(getProduct)}
+					<Typography>
+						Total amount: {getTotal().toFixed(2)}$
+					</Typography>
+				</Grid>
+			</Grid>
 		</Layout>
 	);
 }
