@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../components/Layout";
 import productsState from "../stores/products/atom";
 import usersState from "../stores/users/atom";
@@ -8,14 +8,16 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { TextField } from "@mui/material";
 
 function AdminOverview() {
 	const products = useRecoilValue(productsState);
 	const users = useRecoilValue(usersState);
-
+	const [userSearch, setUserSearch] = useState("");
+	const [productSearch, setProductSearch] = useState("");
 	return (
 		<Layout>
-			<div>
+			<div style={{ width: "100%", height: "100%" }}>
 				<Accordion>
 					<AccordionSummary
 						expandIcon={<ExpandMoreIcon />}
@@ -24,11 +26,25 @@ function AdminOverview() {
 					>
 						<Typography>Products</Typography>
 					</AccordionSummary>
-					{products.map((product) => (
-						<AccordionDetails key={product.id}>
-							<Typography>{product.title}</Typography>
-						</AccordionDetails>
-					))}
+
+					<TextField
+						required
+						id="outlined-required"
+						label="Search"
+						value={productSearch}
+						onChange={(e) => setProductSearch(e.target.value)}
+					/>
+					{products
+						.filter((product) =>
+							product.title
+								.toLowerCase()
+								.includes(productSearch.toLowerCase())
+						)
+						.map((product) => (
+							<AccordionDetails key={product.id}>
+								<Typography>{product.title}</Typography>
+							</AccordionDetails>
+						))}
 				</Accordion>
 				<Accordion>
 					<AccordionSummary
@@ -38,11 +54,24 @@ function AdminOverview() {
 					>
 						<Typography>Users</Typography>
 					</AccordionSummary>
-					{users.map((user) => (
-						<AccordionDetails key={user.id}>
-							<Typography>{user.username}</Typography>
-						</AccordionDetails>
-					))}
+					<TextField
+						required
+						id="outlined-required"
+						label="Search"
+						value={userSearch}
+						onChange={(e) => setUserSearch(e.target.value)}
+					/>
+					{users
+						.filter((user) =>
+							user.username
+								.toLowerCase()
+								.includes(userSearch.toLowerCase())
+						)
+						.map((user) => (
+							<AccordionDetails key={user.id}>
+								<Typography>{user.username}</Typography>
+							</AccordionDetails>
+						))}
 				</Accordion>
 			</div>
 		</Layout>
@@ -50,28 +79,3 @@ function AdminOverview() {
 }
 
 export default AdminOverview;
-
-{
-	/* {products.map((product) => (
-	<Typography >
-		{product.title}
-	</Typography>
-))} */
-}
-
-{
-	/* //   return (
-
-// <div>
-// 
-// </div>
-// <div>
-// {users.map((user) => {
-// 	return (
-// 		<div key={user.id}>
-// 			<div>{user.username}</div>
-// 		</div>
-// 	);
-// })}
-// </div> */
-}

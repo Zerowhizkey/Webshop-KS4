@@ -1,21 +1,27 @@
 import React from "react";
 import Layout from "../components/Layout";
 import { useRecoilValue } from "recoil";
-import authState from "../stores/auth/atom";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { Link } from "@mui/material";
+import authState from "../stores/auth/atom";
 
 function Profile() {
 	const { user } = useRecoilValue(authState);
 
 	return (
 		<Layout>
-			<Link to="/adminpanel">admin</Link>
+			{user.role === "admin" && (
+				<Link component={RouterLink} to="/adminpanel">
+					Admin Overview
+				</Link>
+			)}
 			<TableContainer component={Paper} sx={{ maxWidth: 400 }}>
 				<Table sx={{ maxWidth: 400 }} aria-label="simple table">
 					<TableBody>
