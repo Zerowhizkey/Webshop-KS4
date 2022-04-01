@@ -1,14 +1,14 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import authState from "../stores/auth/atom";
 import { Link as RouterLink } from "react-router-dom";
 import { Link } from "@mui/material";
-import authState from "../stores/auth/atom";
+import { useRecoilValue } from "recoil";
 
 function Profile() {
 	const { user } = useRecoilValue(authState);

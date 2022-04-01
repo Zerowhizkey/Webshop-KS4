@@ -1,9 +1,9 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import useCart from "../hooks/useCart";
 import productsState from "../stores/products/atom";
 import SingleProductCard from "../components/SingleProductCard";
-import useCart from "../hooks/useCart";
+import { useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 
 function Product() {
 	const { productId } = useParams();

@@ -7,12 +7,13 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import authState from "../stores/auth/atom";
+import Avatar from "boring-avatars";
+// import Avatar from "@mui/material/Avatar";
 
 const createLink = (text, path) => {
 	return { text, path };
@@ -147,7 +148,18 @@ const Header = () => {
 								onClick={handleOpenUserMenu}
 								sx={{ p: 0 }}
 							>
-								<Avatar alt="Remy Sharp" src="" />
+								<Avatar
+									size={40}
+									name={user.username}
+									variant="marble"
+									colors={[
+										"#92A1C6",
+										"#146A7C",
+										"#F0AB3D",
+										"#C271B4",
+										"#C20D90",
+									]}
+								/>
 							</IconButton>
 						</Tooltip>
 						<Menu

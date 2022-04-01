@@ -1,9 +1,9 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
-import productsState from "../stores/products/atom";
-import ProductCard from "../components/ProductCard";
 import Grid from "@mui/material/Grid";
 import useCart from "../hooks/useCart";
+import productsState from "../stores/products/atom";
+import ProductCard from "../components/ProductCard";
+import { useRecoilValue } from "recoil";
 
 function Products() {
 	const products = useRecoilValue(productsState);

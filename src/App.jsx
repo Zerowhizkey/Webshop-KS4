@@ -22,8 +22,8 @@ function App() {
 
 	return (
 		<>
-			<CssBaseline />
 			<Router>
+				<CssBaseline />
 				<Routes>
 					<Route element={<Layout />}>
 						<Route path="/" element={<Home />} />

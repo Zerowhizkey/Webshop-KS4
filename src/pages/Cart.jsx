@@ -1,11 +1,11 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
 import productsState from "../stores/products/atom";
-import { Grid, IconButton, Typography } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import useCart from "../hooks/useCart";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import useCart from "../hooks/useCart";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useRecoilValue } from "recoil";
+import { Grid, IconButton, Typography } from "@mui/material";
 
 function Cart() {
 	const products = useRecoilValue(productsState);

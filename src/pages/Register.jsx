@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Button, Typography, TextField, Grid } from "@mui/material";
-import authState from "../stores/auth/atom";
+import { Button, TextField, Grid } from "@mui/material";
 import { useSetRecoilState } from "recoil";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import authState from "../stores/auth/atom";
 
 function Register() {
 	const setAuth = useSetRecoilState(authState);
@@ -16,12 +16,12 @@ function Register() {
 			lastname: "",
 		},
 		address: {
-			city: "bajsstaden",
-			street: "bajskorvgatan23",
-			zipcode: "123123",
-			number: 123,
+			city: "Stockholm",
+			street: "Ringvägen",
+			zipcode: "17298",
+			number: 23,
 		},
-		phone: "03430234234	",
+		phone: "+46707092356",
 	});
 
 	const navigate = useNavigate();

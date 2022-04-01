@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useRecoilValue } from "recoil";
+import {
+	TextField,
+	Accordion,
+	AccordionSummary,
+	AccordionDetails,
+	Typography,
+} from "@mui/material";
 import productsState from "../stores/products/atom";
 import usersState from "../stores/users/atom";
-import { useRecoilValue } from "recoil";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { TextField } from "@mui/material";
 
 function AdminOverview() {
 	const products = useRecoilValue(productsState);
