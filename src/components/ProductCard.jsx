@@ -7,25 +7,14 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { cartState } from "../stores/cart/atom";
 
-function ProductCard({ product }) {
-	const [cart, setCart] = useRecoilState(cartState);
-
-	function handleAddToCart() {
-		const newCartItem = {
-			id: product.id,
-			qty: 1,
-		};
-
-		setCart([...cart, newCartItem]);
-	}
+function ProductCard({ product, onClick }) {
 	return (
 		<Grid item margin={2} align="center" md={3} sm={4} xs={12}>
 			<Card sx={{ maxWidth: 345 }}>
 				<CardMedia
 					component="img"
+					sx={{ objectFit: "contain" }}
 					alt={product.title}
 					height="140"
 					image={product.image}
@@ -39,7 +28,7 @@ function ProductCard({ product }) {
 					</Typography>
 				</CardContent>
 				<CardActions>
-					<Button onClick={handleAddToCart}>Add</Button>
+					<Button onClick={onClick}>Add</Button>
 
 					<Button
 						size="small"

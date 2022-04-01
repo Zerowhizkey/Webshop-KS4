@@ -8,13 +8,12 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { NavLink } from "react-router-dom";
-import { useRecoilValue, useRecoilState, useResetRecoilState } from "recoil";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useRecoilValue, useResetRecoilState } from "recoil";
 import authState from "../stores/auth/atom";
-import { useNavigate } from "react-router-dom";
+
 const createLink = (text, path) => {
 	return { text, path };
 };
@@ -26,11 +25,8 @@ const pages = [
 ];
 const settings = [
 	createLink("Profile", "/profile"),
-	// createLink("Account", "/account"),
 	createLink("Dashboard", "/dashboard"),
 ];
-
-const signInOut = [createLink("Login", "/login")];
 
 const Header = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -57,7 +53,6 @@ const Header = () => {
 	const handleSignInOut = () => {
 		if (user.token) resetAuth();
 		navigate("/login");
-		console.log("precisvadjagvill");
 	};
 
 	const navLinks = pages.map((page) => (
