@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { NavLink } from "react-router-dom";
 import { useRecoilValue, useRecoilState, useResetRecoilState } from "recoil";
 import authState from "../stores/auth/atom";
-
+import { useNavigate } from "react-router-dom";
 const createLink = (text, path) => {
 	return { text, path };
 };
@@ -37,6 +37,7 @@ const Header = () => {
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 	const user = useRecoilValue(authState);
 	const resetAuth = useResetRecoilState(authState);
+	const navigate = useNavigate();
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -53,8 +54,9 @@ const Header = () => {
 		setAnchorElUser(null);
 	};
 
-	const handleSignOut = () => {
-		resetAuth();
+	const handleSignInOut = () => {
+		if (user.token) resetAuth();
+		navigate("/login");
 	};
 
 	const navLinks = pages.map((page) => (
@@ -66,25 +68,6 @@ const Header = () => {
 	const userLinks = settings.map((setting) => (
 		<MenuItem key={setting.text} component={NavLink} to={setting.path}>
 			<Typography textAlign="center">{setting.text}</Typography>
-		</MenuItem>
-	));
-
-	const signInOutLinks = signInOut.map((signInOut) => (
-		<MenuItem key={signInOut.text} component={NavLink} to={signInOut.path}>
-			{user.token ? (
-				<Button
-					style={{
-						minWidth: 0,
-						padding: 0,
-						color: "rgba(0, 0, 0, 0.87)",
-						textTransform: "none",
-					}}
-				>
-					<Typography onClick={handleSignOut}>Logout</Typography>
-				</Button>
-			) : (
-				<Typography textAlign="center">{signInOut.text}</Typography>
-			)}
 		</MenuItem>
 	));
 
@@ -188,7 +171,21 @@ const Header = () => {
 							onClose={handleCloseUserMenu}
 						>
 							{userLinks}
-							{signInOutLinks}
+							<MenuItem>
+								<Button
+									onClick={handleSignInOut}
+									style={{
+										minWidth: 0,
+										padding: 0,
+										color: "rgba(0, 0, 0, 0.87)",
+										textTransform: "none",
+									}}
+								>
+									<Typography>
+										{user.token ? "Logout" : "Login"}
+									</Typography>
+								</Button>
+							</MenuItem>
 						</Menu>
 					</Box>
 				</Toolbar>

@@ -5,10 +5,10 @@ import Layout from "../components/Layout";
 function Home() {
 	return (
 		<Layout>
-			<div>
+			<>
 				<h1>Piri's Great Store</h1>
 				<Typography textAlign="center">Take a look around!</Typography>
-			</div>
+			</>
 		</Layout>
 	);
 }

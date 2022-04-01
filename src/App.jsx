@@ -14,12 +14,14 @@ import {
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import authState from "./stores/auth/atom";
 import { useRecoilValue } from "recoil";
+import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
 	const auth = useRecoilValue(authState);
 
 	return (
 		<>
+			<CssBaseline />
 			<Router>
 				<Routes>
 					<Route path="/" element={<Home />} />
