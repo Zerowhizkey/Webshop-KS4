@@ -42,7 +42,7 @@ function Login() {
 			<Grid
 				margin={1}
 				container
-				direction="row"
+				direction="column"
 				justifyContent="center"
 				onSubmit={handleSubmit}
 				component="form"
@@ -51,7 +51,6 @@ function Login() {
 				}}
 				noValidate
 				autoComplete="off"
-				display="flex"
 			>
 				<Grid item>
 					<TextField
