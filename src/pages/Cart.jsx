@@ -1,7 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import productsState from "../stores/products/atom";
-import Layout from "../components/Layout";
 import { Grid, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
@@ -91,7 +90,7 @@ function Cart() {
 	}
 
 	return (
-		<Layout>
+		<>
 			<Grid container justifyContent="center">
 				<Grid item textAlign="center">
 					<h1>My Cart</h1>
@@ -101,7 +100,7 @@ function Cart() {
 					</Typography>
 				</Grid>
 			</Grid>
-		</Layout>
+		</>
 	);
 }
 

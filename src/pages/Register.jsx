@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import Layout from "../components/Layout";
 import { Button, Typography, TextField, Grid } from "@mui/material";
 import authState from "../stores/auth/atom";
 import { useSetRecoilState } from "recoil";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import { Navigate } from "react-router-dom";
-// import axios from "axios";
-// import authState from "../stores/auth/atom";
-// import { useRecoilValue, useRecoilState } from "recoil";
 
 function Register() {
 	const setAuth = useSetRecoilState(authState);
@@ -57,7 +52,7 @@ function Register() {
 			});
 	};
 	return (
-		<Layout>
+		<>
 			<Grid
 				margin={1}
 				container
@@ -140,7 +135,7 @@ function Register() {
 
 				<Button type="submit">Register</Button>
 			</Grid>
-		</Layout>
+		</>
 	);
 }
 

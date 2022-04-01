@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Layout from "../components/Layout";
 import productsState from "../stores/products/atom";
 import usersState from "../stores/users/atom";
 import { useRecoilValue } from "recoil";
@@ -16,7 +15,7 @@ function AdminOverview() {
 	const [userSearch, setUserSearch] = useState("");
 	const [productSearch, setProductSearch] = useState("");
 	return (
-		<Layout>
+		<>
 			<div style={{ width: "100%", height: "100%" }}>
 				<Accordion>
 					<AccordionSummary
@@ -74,7 +73,7 @@ function AdminOverview() {
 						))}
 				</Accordion>
 			</div>
-		</Layout>
+		</>
 	);
 }
 

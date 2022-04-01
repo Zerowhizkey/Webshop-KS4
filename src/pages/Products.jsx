@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../components/Layout";
 import { useRecoilValue } from "recoil";
 import productsState from "../stores/products/atom";
 import ProductCard from "../components/ProductCard";
@@ -11,7 +10,7 @@ function Products() {
 	const cart = useCart();
 
 	return (
-		<Layout>
+		<>
 			<Grid
 				container
 				spacing={2}
@@ -28,7 +27,7 @@ function Products() {
 					);
 				})}
 			</Grid>
-		</Layout>
+		</>
 	);
 }
 

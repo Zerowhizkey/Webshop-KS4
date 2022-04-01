@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import productsState from "../stores/products/atom";
 import SingleProductCard from "../components/SingleProductCard";
-import Layout from "../components/Layout";
 import useCart from "../hooks/useCart";
 
 function Product() {
@@ -15,7 +14,7 @@ function Product() {
 	);
 
 	return (
-		<Layout>
+		<>
 			<div>
 				{!product ? (
 					"product not found!"
@@ -27,7 +26,7 @@ function Product() {
 					/>
 				)}
 			</div>
-		</Layout>
+		</>
 	);
 }
 

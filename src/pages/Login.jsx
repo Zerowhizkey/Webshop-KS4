@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import Layout from "../components/Layout";
 import Grid from "@mui/material/Box";
 import { useSetRecoilState } from "recoil";
 import authState from "../stores/auth/atom";
@@ -38,7 +37,7 @@ function Login() {
 	};
 
 	return (
-		<Layout>
+		<>
 			<Grid
 				margin={1}
 				container
@@ -76,7 +75,7 @@ function Login() {
 			<Typography padding={1} textAlign="center">
 				Not a user ? <Link to="/register">Sign Up!</Link>
 			</Typography>
-		</Layout>
+		</>
 	);
 }
 

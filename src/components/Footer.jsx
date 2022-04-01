@@ -1,16 +1,7 @@
 import React from "react";
 import Divider from "@mui/material/Divider";
-import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import { styled } from "@mui/material/styles";
-
-const Item = styled(Paper)(({ theme }) => ({
-	backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-	...theme.typography.body2,
-	padding: theme.spacing(1),
-	textAlign: "center",
-	color: theme.palette.text.secondary,
-}));
+import { Typography } from "@mui/material";
 
 function Footer() {
 	return (
@@ -21,9 +12,9 @@ function Footer() {
 				spacing={2}
 				bottom={0}
 			>
-				<Item> © 2020 Copyright</Item>
-				<Item>Marcus Piri</Item>
-				<Item>PGS</Item>
+				<Typography> © 2020 Copyright</Typography>
+				<Typography>Marcus Piri</Typography>
+				<Typography>PGS</Typography>
 			</Stack>
 		</footer>
 	);
