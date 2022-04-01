@@ -57,6 +57,7 @@ const Header = () => {
 	const handleSignInOut = () => {
 		if (user.token) resetAuth();
 		navigate("/login");
+		console.log("precisvadjagvill");
 	};
 
 	const navLinks = pages.map((page) => (
@@ -67,7 +68,7 @@ const Header = () => {
 
 	const userLinks = settings.map((setting) => (
 		<MenuItem key={setting.text} component={NavLink} to={setting.path}>
-			<Typography textAlign="center">{setting.text}</Typography>
+			<Typography>{setting.text}</Typography>
 		</MenuItem>
 	));
 
@@ -171,20 +172,10 @@ const Header = () => {
 							onClose={handleCloseUserMenu}
 						>
 							{userLinks}
-							<MenuItem>
-								<Button
-									onClick={handleSignInOut}
-									style={{
-										minWidth: 0,
-										padding: 0,
-										color: "rgba(0, 0, 0, 0.87)",
-										textTransform: "none",
-									}}
-								>
-									<Typography>
-										{user.token ? "Logout" : "Login"}
-									</Typography>
-								</Button>
+							<MenuItem onClick={handleSignInOut}>
+								<Typography>
+									{user.token ? "Logout" : "Login"}
+								</Typography>
 							</MenuItem>
 						</Menu>
 					</Box>
