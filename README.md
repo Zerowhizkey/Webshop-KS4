@@ -1,6 +1,6 @@
 # webshop, school assignment
 
-[Click here to view it on Netlify](https://piri-ks4-webshop.netlify.app/)
+[Click here to view it on Netlify](https://piri-ks4-webshop.netlify.app/)/
 Webshop made in React JS as a school project.
 built using Material UI [MUI](https://mui.com/)
 
