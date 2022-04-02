@@ -8,6 +8,8 @@ built using Material UI [MUI](https://mui.com/)
 
 ### `npm i`
 
+To install all the neccessary dependencies
+
 ### `npm run dev`
 
 Runs the app in the development mode.\
