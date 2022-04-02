@@ -10,6 +10,7 @@ import {
 import productsState from "../stores/products/atom";
 import usersState from "../stores/users/atom";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Layout from "../components/Layout";
 
 function AdminOverview() {
 	const products = useRecoilValue(productsState);
@@ -17,7 +18,7 @@ function AdminOverview() {
 	const [userSearch, setUserSearch] = useState("");
 	const [productSearch, setProductSearch] = useState("");
 	return (
-		<>
+		<Layout>
 			<div style={{ width: "100%", height: "100%" }}>
 				<Accordion>
 					<AccordionSummary
@@ -75,7 +76,7 @@ function AdminOverview() {
 						))}
 				</Accordion>
 			</div>
-		</>
+		</Layout>
 	);
 }
 
