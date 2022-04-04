@@ -158,18 +158,11 @@ const Header = () => {
 								onClick={handleOpenUserMenu}
 								sx={{ p: 0 }}
 							>
-								{auth.token ? (
+								{auth.user.name ? (
 									<Avatar
 										size={40}
-										name={auth.user.username}
+										name={`${auth.user.name.firstname} ${auth.user.name.lastname} `}
 										variant="beam"
-										colors={[
-											"#92A1C6",
-											"#146A7C",
-											"#F0AB3D",
-											"#C271B4",
-											"#C20D90",
-										]}
 									/>
 								) : (
 									<MuiAvatar alt="Remy Sharp" src="" />
@@ -192,7 +185,7 @@ const Header = () => {
 							open={Boolean(anchorElUser)}
 							onClose={handleCloseUserMenu}
 						>
-							{userLinks}
+							{auth.token ? userLinks : ""}
 							<MenuItem
 								onClick={() => {
 									handleSignInOut();

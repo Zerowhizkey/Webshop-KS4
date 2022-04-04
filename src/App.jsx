@@ -11,7 +11,7 @@ import {
 	Profile,
 	Register,
 } from "./pages/index";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import authState from "./stores/auth/atom";
 import { useRecoilValue } from "recoil";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -22,7 +22,7 @@ function App() {
 
 	return (
 		<>
-			<Router>
+			<BrowserRouter>
 				<CssBaseline />
 				<Routes>
 					<Route element={<Layout />}>
@@ -33,6 +33,7 @@ function App() {
 							element={<Product />}
 						/>
 						<Route path="/cart" element={<Cart />} />
+
 						{auth.token ? (
 							<>
 								<Route path="/profile" element={<Profile />} />
@@ -59,7 +60,7 @@ function App() {
 						<Route path="*" element={<ErrorPage />} />
 					</Route>
 				</Routes>
-			</Router>
+			</BrowserRouter>
 		</>
 	);
 }
