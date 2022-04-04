@@ -30,8 +30,8 @@ function Login() {
 							user: userData.data,
 							token: response.data.token,
 						});
+						navigate("/profile");
 					});
-				navigate("/profile");
 			});
 	};
 

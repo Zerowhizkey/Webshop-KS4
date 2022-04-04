@@ -1,8 +1,13 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
+import { useLocation, Navigate } from "react-router-dom";
 
 function ErrorPage() {
-	return (
+	const { pathname } = useLocation();
+
+	return ["/profile", "/dashboard"].includes(pathname) ? (
+		<Navigate to="/login" />
+	) : (
 		<>
 			<Grid container justifyContent="center" alignItems="center">
 				<Grid item>
