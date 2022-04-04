@@ -46,9 +46,9 @@ function Register() {
 									user: userData.data,
 									token: response.data.token,
 								});
+								navigate("/profile");
 							});
 					});
-				navigate("/profile");
 			});
 	};
 	return (
