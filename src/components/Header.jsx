@@ -12,7 +12,8 @@ import MenuItem from "@mui/material/MenuItem";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import authState from "../stores/auth/atom";
-import Avatar from "@mui/material/Avatar";
+import { Avatar as MuiAvatar } from "@mui/material/";
+import Avatar from "boring-avatars";
 
 const createLink = (text, path) => {
 	return { text, path };
@@ -31,7 +32,7 @@ const settings = [
 const Header = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
-	const user = useRecoilValue(authState);
+	const auth = useRecoilValue(authState);
 	const resetAuth = useResetRecoilState(authState);
 	const navigate = useNavigate();
 
@@ -51,7 +52,7 @@ const Header = () => {
 	};
 
 	const handleSignInOut = () => {
-		if (user.token) resetAuth();
+		if (auth.token) resetAuth();
 		navigate("/login");
 	};
 
@@ -157,7 +158,22 @@ const Header = () => {
 								onClick={handleOpenUserMenu}
 								sx={{ p: 0 }}
 							>
-								<Avatar alt="Remy Sharp" src="" />
+								{auth.token ? (
+									<Avatar
+										size={40}
+										name={auth.user.username}
+										variant="beam"
+										colors={[
+											"#92A1C6",
+											"#146A7C",
+											"#F0AB3D",
+											"#C271B4",
+											"#C20D90",
+										]}
+									/>
+								) : (
+									<MuiAvatar alt="Remy Sharp" src="" />
+								)}
 							</IconButton>
 						</Tooltip>
 						<Menu
@@ -184,7 +200,7 @@ const Header = () => {
 								}}
 							>
 								<Typography>
-									{user.token ? "Logout" : "Login"}
+									{auth.token ? "Logout" : "Login"}
 								</Typography>
 							</MenuItem>
 						</Menu>
