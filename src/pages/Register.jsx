@@ -4,7 +4,6 @@ import { useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import authState from "../stores/auth/atom";
-import Layout from "../components/Layout";
 
 function Register() {
 	const setAuth = useSetRecoilState(authState);
@@ -53,7 +52,7 @@ function Register() {
 			});
 	};
 	return (
-		<Layout>
+		<>
 			<Grid
 				margin={1}
 				container
@@ -136,7 +135,7 @@ function Register() {
 
 				<Button type="submit">Register</Button>
 			</Grid>
-		</Layout>
+		</>
 	);
 }
 

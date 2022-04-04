@@ -56,13 +56,23 @@ const Header = () => {
 	};
 
 	const navLinks = pages.map((page) => (
-		<MenuItem key={page.text} component={NavLink} to={page.path}>
+		<MenuItem
+			key={page.text}
+			component={NavLink}
+			to={page.path}
+			onClick={handleCloseNavMenu}
+		>
 			<Typography textAlign="center">{page.text}</Typography>
 		</MenuItem>
 	));
 
 	const userLinks = settings.map((setting) => (
-		<MenuItem key={setting.text} component={NavLink} to={setting.path}>
+		<MenuItem
+			key={setting.text}
+			component={NavLink}
+			to={setting.path}
+			onClick={handleCloseUserMenu}
+		>
 			<Typography>{setting.text}</Typography>
 		</MenuItem>
 	));
@@ -167,7 +177,12 @@ const Header = () => {
 							onClose={handleCloseUserMenu}
 						>
 							{userLinks}
-							<MenuItem onClick={handleSignInOut}>
+							<MenuItem
+								onClick={() => {
+									handleSignInOut();
+									handleCloseUserMenu();
+								}}
+							>
 								<Typography>
 									{user.token ? "Logout" : "Login"}
 								</Typography>

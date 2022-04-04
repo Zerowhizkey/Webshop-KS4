@@ -6,7 +6,6 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useRecoilValue } from "recoil";
 import { Grid, IconButton, Typography } from "@mui/material";
-import Layout from "../components/Layout";
 
 function Cart() {
 	const products = useRecoilValue(productsState);
@@ -91,7 +90,7 @@ function Cart() {
 	}
 
 	return (
-		<Layout>
+		<>
 			<Grid container justifyContent="center">
 				<Grid item textAlign="center">
 					<h1>My Cart</h1>
@@ -101,7 +100,7 @@ function Cart() {
 					</Typography>
 				</Grid>
 			</Grid>
-		</Layout>
+		</>
 	);
 }
 

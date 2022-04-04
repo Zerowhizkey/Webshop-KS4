@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Grid from "@mui/material/Box";
 import authState from "../stores/auth/atom";
-import Layout from "../components/Layout";
 
 function Login() {
 	const [username, setUsername] = useState("");
@@ -37,7 +36,7 @@ function Login() {
 	};
 
 	return (
-		<Layout>
+		<>
 			<Grid
 				margin={1}
 				container
@@ -75,7 +74,7 @@ function Login() {
 			<Typography padding={1} textAlign="center">
 				Not a user ? <Link to="/register">Sign Up!</Link>
 			</Typography>
-		</Layout>
+		</>
 	);
 }
 

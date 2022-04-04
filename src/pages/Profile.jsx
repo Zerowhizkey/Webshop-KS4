@@ -9,13 +9,12 @@ import authState from "../stores/auth/atom";
 import { Link as RouterLink } from "react-router-dom";
 import { Link } from "@mui/material";
 import { useRecoilValue } from "recoil";
-import Layout from "../components/Layout";
 
 function Profile() {
 	const { user } = useRecoilValue(authState);
 
 	return (
-		<Layout>
+		<>
 			{user.role === "admin" && (
 				<Link component={RouterLink} to="/adminpanel">
 					Admin Overview
@@ -66,7 +65,7 @@ function Profile() {
 					</TableBody>
 				</Table>
 			</TableContainer>
-		</Layout>
+		</>
 	);
 }
 
