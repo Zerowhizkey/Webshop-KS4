@@ -1,4 +1,4 @@
-export { default as Account } from "./Account";
+export { default as Presentation } from "./Presentation";
 export { default as AdminOverview } from "./AdminOverview";
 export { default as Cart } from "./Cart";
 export { default as Dashboard } from "./Dashboard";

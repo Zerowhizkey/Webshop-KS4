@@ -28,6 +28,7 @@ const createLink = (text, path) => {
 const settings = [
 	createLink("Profile", "/profile"),
 	createLink("Dashboard", "/dashboard"),
+	createLink("Presentation", "/presentation"),
 ];
 
 const Header = () => {

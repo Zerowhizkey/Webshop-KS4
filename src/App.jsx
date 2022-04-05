@@ -10,6 +10,7 @@ import {
 	Product,
 	Profile,
 	Register,
+	Presentation,
 } from "./pages/index";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import authState from "./stores/auth/atom";
@@ -40,6 +41,10 @@ function App() {
 								<Route
 									path="/dashboard"
 									element={<Dashboard />}
+								/>
+								<Route
+									path="/presentation"
+									element={<Presentation />}
 								/>
 							</>
 						) : (
