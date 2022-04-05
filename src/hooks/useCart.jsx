@@ -25,11 +25,19 @@ function useCart() {
 		}
 		setCart([...cart, { id, qty: 1 }]);
 	}
+
+	function getTotalQty() {
+		return cart.reduce((sum, ci) => {
+			return sum + ci.qty;
+		}, 0);
+	}
+
 	return {
 		items: cart,
 		setItemQty,
 		getItemQty,
 		addItem,
+		getTotalQty,
 	};
 }
 

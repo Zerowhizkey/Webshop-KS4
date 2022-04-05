@@ -14,16 +14,17 @@ import { useRecoilValue, useResetRecoilState } from "recoil";
 import authState from "../stores/auth/atom";
 import { Avatar as MuiAvatar } from "@mui/material/";
 import Avatar from "boring-avatars";
+import useCart from "../hooks/useCart";
 
 const createLink = (text, path) => {
 	return { text, path };
 };
 
-const pages = [
-	createLink("Home", "/"),
-	createLink("Products", "/products"),
-	createLink("Cart", "/cart"),
-];
+// const pages = [
+// 	createLink("Home", "/"),
+// 	createLink("Products", "/products"),
+// 	createLink("Cart", "/cart"),
+// ];
 const settings = [
 	createLink("Profile", "/profile"),
 	createLink("Dashboard", "/dashboard"),
@@ -35,6 +36,7 @@ const Header = () => {
 	const auth = useRecoilValue(authState);
 	const resetAuth = useResetRecoilState(authState);
 	const navigate = useNavigate();
+	const cart = useCart();
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -55,6 +57,14 @@ const Header = () => {
 		if (auth.token) resetAuth();
 		navigate("/login");
 	};
+
+	const cartQty = cart.getTotalQty();
+
+	const pages = [
+		createLink("Home", "/"),
+		createLink("Products", "/products"),
+		createLink(`Cart${cartQty === 0 ? "" : ` (${cartQty})`}`, "/cart"),
+	];
 
 	const navLinks = pages.map((page) => (
 		<MenuItem
